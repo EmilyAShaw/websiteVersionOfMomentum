@@ -1,0 +1,55 @@
+
+
+ @font-face{
+
+ 	font-family: Adam;
+ 	src:url('Adam.eot') format('embedded-opentype'),
+ 	url('Adam.otf') format('opentype');
+ }
+ 
+body{
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    background-color: white;
+}
+#navbar{
+    background-color: white;
+    color: black;
+}
+button{
+    border: none;
+    background-color: white;
+    color: #0080ff;
+}
+#instructions, #map, #directions{
+    border-radius: 10px;
+    background-color: white;
+    border: 1px #dddddd solid;
+    font-size: 0.8em;
+    
+ 
+   
+}
+#gotIt{
+    background-color: aliceblue;
+    color: black;
+    border-radius: 10px;
+    border-color: aliceblue;
+}
+#set{
+    background-color: aliceblue;
+    color: black;
+    border-radius: 10px;
+    border-color: aliceblue;
+}
+#list{
+   position: relative;
+    height: 490px;
+    width: 90%;
+    max-width: 320px;
+    margin: 15px auto;
+   z-index: -10;
+    padding: 0px 10px;
+    
+}
+
+

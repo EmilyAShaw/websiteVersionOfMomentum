@@ -1,0 +1,55 @@
+
+
+eqfeed_callback({
+  "type": "FeatureCollection",
+  "features": [
+    {
+    "type": "Feature",
+      "properties": {
+        "About": "Pro Life",
+        "place": "Wellington Hospital",
+        "time": "12:00 pm",
+        "date": "14/12/2018",
+      },
+      "geometry": {
+        "about": "Zoe",
+        "type": "Point",
+        "coordinates":[
+          -185.179274,
+          -41.303024,
+        ]
+      },
+      
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "About": "Derek",
+        "place": "Wellington Hospital",
+        "time": "12:40 pm",
+        "date": "12/12/2018",
+      },
+
+
+      "geometry": {
+        "about": "Derek",
+        "type": "Point",
+        "coordinates": [
+           -185.209274,
+          -41.30309,
+         
+        ]
+        
+      },
+      
+    }
+
+
+
+   
+    
+   
+   
+   
+  ]
+});

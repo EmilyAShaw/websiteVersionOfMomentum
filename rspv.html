@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Momentum</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="momentum.css" />
+        <link type="text/css" rel="stylesheet" href="momentumios.css" />
+        <script type="text/javascript" src="momentum.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+         
+        <script >// Initialize Firebase
+  var config = {
+      
+    apiKey: "AIzaSyD4MFC0g5CMxbm-XnsS98e5x05ha7ZVoVM",
+    authDomain: "momentum-1524978469122.firebaseapp.com",
+    databaseURL: "https://momentum-1524978469122.firebaseio.com",
+    projectId: "momentum-1524978469122",
+    storageBucket: "momentum-1524978469122.appspot.com",
+    messagingSenderId: "498822671652"
+  };
+  firebase.initializeApp(config);
+  console.log(firebase);
+  var database = firebase.database();
+  var ref = database.ref('momentum-1524978469122');
+  ref.on('value', gotData, errData);
+ //var attend = false;
+ var attendees = 22;
+  var attendeesW = 22;
+  var attendeesC = 21;
+  var attendeesK = 1123;
+  
+ 
+  var people = firebase.database().ref('WellingtonHospital');
+  var peopleC = firebase.database().ref('CourtneyPlace');
+  var peopleK = firebase.database().ref('KelburnCampus');
+  
+
+
+
+
+
+  
+  function gotData(data) {
+    console.log(data);
+  }
+  
+   function errData(err){
+      console.log("error");
+      console.log(err);
+      
+  }
+
+
+  
+  function wellingtonHosp(attend) {
+    console.log(attend);
+    
+firebase.database().ref('WellingtonHospital/field').on('value', function(snapshot) {
+ 
+  console.log(snapshot.val());
+
+  attendeesW = snapshot.val();
+});
+
+firebase.database().ref('WellingtonHospital/going').on('value', function(snapshot) {var attend = snapshot.val(); 
+console.log(attend);
+
+});
+
+if (attend == true){
+  document.getElementById("myCheck").checked = true;
+ console.log(attend);
+}
+
+
+    var checkBox = document.getElementById("myCheck");
+    var text = document.getElementById("text");
+
+
+    if (checkBox.checked == true){
+        attend = true;
+        //var currentAttendees=20;
+   firebase.database().ref('WellingtonHospital').set({
+   field: attendees +1,
+   going: true
+   
+  });
+  
+        
+    } else if (checkBox.checked ==false) {
+       firebase.database().ref('WellingtonHospital').set({
+   field: attendees -1,
+
+   going: false
+  });
+    }
+  }
+
+function courtneyPlc(attend) {
+    //console.log(attend);
+    
+firebase.database().ref('CourtneyPlace/field').on('value', function(snapshot) {
+ 
+  console.log(snapshot.val());
+
+  attendeesW = snapshot.val();
+});
+
+firebase.database().ref('CourtneyPlace/going').on('value', function(snapshot) {var attend = snapshot.val(); 
+console.log(attend);
+
+});
+
+if (attend == true){
+  document.getElementById("myCheck").checked = true;
+ console.log(attend);
+}
+
+
+    var checkBox = document.getElementById("myCheck");
+    var text = document.getElementById("text");
+
+
+    if (checkBox.checked == true){
+        attend = true;
+        //var currentAttendees=20;
+   firebase.database().ref('CourtneyPlace').set({
+   field: attendees +1,
+   going: true
+   
+  });
+  
+        
+    } else if (checkBox.checked ==false) {
+       firebase.database().ref('CourtneyPlace').set({
+   field: attendees -1,
+
+   going: false
+  });
+    }
+  }
+  function KelburnCamp(attend) {
+    //console.log(attend);
+    
+firebase.database().ref('KelburnCampus/field').on('value', function(snapshot) {
+ 
+  console.log(snapshot.val());
+
+  attendeesW = snapshot.val();
+});
+
+firebase.database().ref('KelburnCampus/going').on('value', function(snapshot) {var attend = snapshot.val(); 
+console.log(attend);
+
+});
+
+if (attend == true){
+  document.getElementById("myCheck").checked = true;
+ console.log(attend);
+}
+
+
+    var checkBox = document.getElementById("myCheck");
+    var text = document.getElementById("text");
+
+
+    if (checkBox.checked == true){
+        attend = true;
+        //var currentAttendees=20;
+   firebase.database().ref('KelburnCampus').set({
+   field: attendees +1,
+   going: true
+   
+  });
+  
+        
+    } else if (checkBox.checked ==false) {
+       firebase.database().ref('KelburnCampus').set({
+   field: attendees -1,
+
+   going: false
+  });
+    }
+
+
+ 
+    
+}</script>
+  
+</script>
+    </head>
+  <header><img src="images/banner2.png" alt="banner" width="50%" height="50%"></header>
+    <body onLoad="init()">
+        
+        
+       
+        <div id="navbar">
+            
+             
+           
+            <ul>
+                  <li id = "mapnav"><a href="index.html">Map</a></li>
+                  <li id = "rspv"><a href="rspv.html">RSPV</a></li>
+                  <li id = "crew"><a href="crew.html">Crew</a></li>
+                  
+            </ul>
+
+        </div>
+        <div id="container">
+           <div id="instructions">
+                <h1>Here you can RSPV to specific protests. If the protest gets too large, it will be reported for your safety</h1>
+                
+                <h1 style="text-align: center"><button id="gotIt" onClick="toggle()">Got It</button></h1>
+            </div>
+ <script>function toggle() {
+    var x = document.getElementById("instructions");
+   x.style.display = "none";
+}</script>
+            
+            <div id="map">
+                
+                
+
+
+
+                <h5>Pro-Life Conference</h5>
+                <p> <p1><img src="location.png" alt="Smiley face" height="12" width="12">           Parliament: 6 Parliament St, Pipitea, 6011</p1>
+                
+                <p2>Attending: <input type="checkbox" id="myCheck"  onclick="wellingtonHosp()"></p2><p2><script>document.write("RSPVs': "+ attendeesW);
+                    </script></p2></p>
+            
+ <h5>Women's Rights</h5>
+                <p> <p1><img src="location.png" alt="Smiley face" height="12" width="12">  23 Mein St,Newtown, Wellington, 6021</p1>
+                
+                <p2>Attending: <input type="checkbox" id="myCheck"  onclick="courtneyPlc()"></p2><p2><script>document.write("RSPVs': "+ attendeesC);
+                    </script></p2></p>
+
+ <h5>VUWSA</h5>
+ <p> <p1><img src="location.png" alt="Smiley face" height="12" width="12">   Kelburn Campus: Kelburn, Wellington 6012</p1>
+                
+                <p2>Attending: <input type="checkbox" id="myCheck"  onclick="KelburnCamp()"></p2><p2><script>document.write("RSPVs': "+ attendeesK);
+                    </script></p2></p>
+           </div>
+           
+        </div>
+    </body>
+</html>

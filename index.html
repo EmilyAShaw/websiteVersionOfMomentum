@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Momentum</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="momentum.css" />
+        <link type="text/css" rel="stylesheet" href="momentumios.css" />
+        <script type="text/javascript" src="momentum.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf8Ioz_QYIb8FARHlXItYYb1Y9mA1vH_4"></script>
+       
+    </head>
+   <header><img src="images/banner2.png" alt="banner" width="50%" height="50%"></header>
+    <body onLoad="init()">
+       
+        <div id="navbar">
+            
+             
+           
+            <ul>
+                  <li id = "mapnav"><a href="index.html">Map</a></li>
+                  <li id = "rspv"><a href="rspv.html">RSPV</a></li>
+                  <li id = "crew"><a href="crew.html">Crew</a></li>
+                  
+            </ul>
+ 
+        </div>
+        <div id="container">
+            <div id="instructions">
+                <h1>Here you can track which protests are where, click on the blue 'P' to see what the topic is about. Head on over to RSPV for more information. Use two fingers to scroll through the map.</h1>
+                
+                <h1 style="text-align: center"><button id="gotIt" onClick="toggle()">Got It</button></h1>
+            </div>
+ <script>function toggle() {
+    var x = document.getElementById("instructions");
+   x.style.display = "none";
+}</script>
+           
+            <div id="map"></div>
+
+            
+             <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: new google.maps.LatLng(-41.300326,174.780202),
+         
+        });
+         infoWindow = new google.maps.InfoWindow;
+         
+         
+        
+        
+        
+        
+
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src = 'file.json';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var about = results.features[i].geometry.about;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+         var time = results.features[i].properties.time;
+         var date = results.features[i].properties.date;
+         
+          
+      
+           var infowindow = new google.maps.InfoWindow({
+          content: about + ": " + time,
+           position: latLng,
+          
+        });
+
+      
+         var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: "img/placeholder.png"
+            
+            
+          });
+          
+           marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+       
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf8Ioz_QYIb8FARHlXItYYb1Y9mA1vH_4&callback=initMap">
+    </script>
+            <div id="directions"></div>
+        </div>
+    </body>
+</html>

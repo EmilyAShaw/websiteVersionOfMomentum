@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Momentum</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="momentum.css" />
+        <link type="text/css" rel="stylesheet" href="momentumios.css" />
+        <script type="text/javascript" src="momentum.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf8Ioz_QYIb8FARHlXItYYb1Y9mA1vH_4"></script>
+       
+    </head>
+   <header><img src="images/banner2.png" alt="banner" width="50%" height="50%"></header>
+    <body onLoad="init()">
+       
+        <div id="navbar">
+            
+             
+           
+            <ul>
+                  <li id = "mapnav"><a href="index.html">Map</a></li>
+                  <li id = "rspv"><a href="rspv.html">RSPV</a></li>
+                  <li id = "crew"><a href="crew.html">Crew</a></li>
+                  
+            </ul>
+
+        </div>
+        <div id="container">
+            <div id="instructions">
+                <h1>Here you can track which protests are where, click on the blue 'P' to see what the topic is about. Head on over to RSPV for more information.</h1>
+                
+                <h1 style="text-align: center"><button id="gotIt" onClick="toggle()">Got It</button></h1>
+            </div>
+ <script>function toggle() {
+    var x = document.getElementById("instructions");
+   x.style.display = "none";
+}</script>
+           
+            <div id="map"></div>
+                 <script>
+  
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -41.287028, lng:  174.776426},
+          zoom: 13
+        });
+         
+         //var myLatLng = {lat: -41.287658, lng:  174.775366};
+          var marker = new google.maps.Marker({
+          position: {lat: -41.287658, lng:  174.775366},
+          map: map,
+          title: 'Hello World!',
+          icon: "img/kimIcon.png"
+      });
+          var marker = new google.maps.Marker({
+          position: {lat: -41.287028, lng:  174.776426},
+          map: map,
+          title: 'Hello World!',
+           icon: "img/kylieIcon.png"
+        });
+          var marker = new google.maps.Marker({
+          position: {lat: 41.286834, lng:  174.775825},
+          map: map,
+          title: 'Hello World!',
+           icon: "img/kendallIcon.png"
+      
+        
+        });
+        
+        infoWindow = new google.maps.InfoWindow;
+        
+        
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('you are here');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+      
+ 
+      
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+      
+      
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf8Ioz_QYIb8FARHlXItYYb1Y9mA1vH_4&callback=initMap">
+    </script>
+            <div id="directions"></div>
+        </div>
+    </body>
+</html>
